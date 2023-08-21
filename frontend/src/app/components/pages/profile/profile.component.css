@@ -1,0 +1,168 @@
+body{
+  margin-top:20px;
+  color: #1a202c;
+  text-align: left;
+  background-color: #e2e8f0;    
+  
+}
+.main-body {
+  padding: 15px;
+}
+
+ 
+ 
+ 
+
+.card {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1rem;
+}
+
+
+ 
+
+.gutters-sm {
+  margin-right: -8px;
+  margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+.mb-3, .my-3 {
+  margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+  background-color: #e2e8f0;
+}
+.h-100 {
+  height: 100%!important;
+}
+.shadow-none {
+  box-shadow: none!important;
+}
+
+.cards {
+  border-radius: 0px;
+  padding: 0px;
+  margin: 0px;
+ border: none;
+     background-color: transparent;
+   background-color: white;
+   }
+   
+   .cards-img-top {
+     border-radius: 0px;
+   }
+   
+   .cardbody {
+    border-radius: 0px;
+    background-color: transparent;
+    display: flex;
+   
+   }
+ 
+   .cards-body img {
+     height: 30px;
+     width: 30px;
+     border-radius: 100%;
+ 
+   }
+   
+   .cards-title {
+     font-size: 27px;
+    font-weight: 600;
+ padding-top: 0px;
+     background-color: transparent;
+     
+   }
+   
+   .cards-text {
+     font-size: 2px;
+     color: #666;
+     background-color: transparent;
+   }
+   
+   .cards-footer {
+     background-color: transparent;
+     border: none;
+   }
+   
+   .cards-footer small {
+     color: #999;
+     background-color: transparent;
+     border: none;
+   }
+   .profile-image {
+
+    height: 150px;
+    width: 150px;
+    object-fit:cover;
+  }
+
+
+  .profile-image-container {
+    position: relative;
+    transition: filter 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+
+  
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .overlay-text {
+    color: white;
+    font-size: 15px;
+    font-weight:500;
+  }
+  
+  .profile-image-container:hover .image-overlay {
+    opacity: 1;
+  }
+  
+  
+  .card a {
+    text-decoration: none;  
+    color: inherit;  
+  }
+
+
+  .card-img-top {
+    width: 100%;  
+    height: 177px;  
+    object-fit: cover;  
+  }
+

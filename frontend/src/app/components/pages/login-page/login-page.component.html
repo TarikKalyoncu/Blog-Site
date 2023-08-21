@@ -1,0 +1,74 @@
+<app-header></app-header>
+<div class="bg-img">
+  <div class="content" style="background-color: rgb(255, 255, 255)">
+    <header>Giriş Formu</header>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="form-signin">
+      <div class="field space border">
+        <span class="fa-solid fa-envelope"></span>
+        <label for="exampleInputEmail1" class="sr-only">Email address</label>
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          placeholder="Email"
+          autocomplete="disabled"
+        />
+        <span
+          class="text-danger"
+          *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('pattern', 'email')"
+          ><i class="fa-solid fa-xmark"></i
+        ></span>
+      </div>
+      <div class="field border">
+        <span class="fa fa-lock"></span>
+        <label for="exampleInputPassword1" class="sr-only">Parola</label>
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Parola"
+        />
+        <span
+          class="text-danger"
+          *ngIf="
+            loginForm.controls['password'].dirty &&
+            loginForm.hasError('required', 'password')
+          "
+          ><i class="fa-solid fa-xmark"></i
+        ></span>
+      </div>
+      <div class="field signup">
+        <button
+          [disabled]="!loginForm.valid"
+          type="submit"
+          class="btn btn-lg btn-primary btn-block"
+        >
+          Giriş Yap
+        </button>
+      </div>
+
+      <div class="signup">
+        Hesabın yok mu?
+        <a [routerLink]="['/auth', 'register']">Kayıt ol</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const pass_field = document.querySelector(".pass-key");
+  const showBtn = document.querySelector(".show");
+  showBtn.addEventListener("click", function () {
+    if (pass_field.type === "password") {
+      pass_field.type = "text";
+      showBtn.textContent = "HIDE";
+      showBtn.style.color = "#3498db";
+    } else {
+      pass_field.type = "password";
+      showBtn.textContent = "SHOW";
+      showBtn.style.color = "#222";
+    }
+  });
+</script>

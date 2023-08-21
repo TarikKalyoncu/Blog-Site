@@ -1,0 +1,88 @@
+.container-fluid{
+
+    padding: 0px;
+    margin: 0px;
+}
+
+
+  .card {
+ border-radius: 0px;
+  
+border: none;
+    background-color: transparent;
+    padding-top: 10px;
+  }
+  
+  .card-img-top {
+    border-radius: 0px;
+  }
+  
+  .card-body {
+    border-radius: 0px;
+    background-color: transparent;
+    display: flex;
+   
+  }
+
+  .card-body img {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    object-fit:cover;
+  }
+  
+  .card-title {
+    font-size: 18px !important;
+ font-weight: 300;
+padding-top: 0px;
+    background-color: transparent;
+  }
+  
+  .card-text {
+    font-size: 20px;
+    color: #666;
+    background-color: transparent;
+  }
+  
+  .card-footer {
+    background-color: transparent;
+    border: none;
+  }
+  
+  .card-footer small {
+    color: #999;
+  }
+  
+  /* Optional: Add some spacing between cards */
+  .mb-4 {
+    margin-bottom: 20px;
+  }
+  .line {
+    height: 0.75px; /* Çizginin yüksekliği */
+   
+    background-color: rgba(0, 0, 0, 0.059); /* Çizgi rengi */
+    
+  }
+  
+   .tittle h3{
+
+
+text-transform:capitalize;
+color:rgb(23, 23, 23);
+font-size: 23px;
+
+  }
+  
+  .card a {
+    text-decoration: none; /* Link altını çizgi kaldırır */
+    color: inherit; /* Link rengini kalıtılan renge çevirir */
+  }
+
+
+  .card-img-top {
+    width: 100%; /* Resmi tam genişlikte göster */
+    height: 177px; /* Sabit bir yükseklik belirle */
+    object-fit: cover; /* Resmi orantılı olarak sığdır */
+  }
+
+

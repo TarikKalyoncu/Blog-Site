@@ -1,0 +1,98 @@
+
+<div class="sidenavbar bg-light">
+  <ul class="category-list">
+    <li  >
+      <button [routerLink]="['/blog', 'angular']"  routerLinkActive="selected-category">
+        <img src="../../../../assets/angular.png" alt=""> 
+        <span class="button-text px-2">Angular</span>
+      </button>
+    </li>
+    <li>
+      <button [routerLink]="['/blog', 'react']" routerLinkActive="selected-category">
+        <img src="../../../../assets/React-icon.svg.png" alt="">
+        <span class="button-text px-2">React</span>
+      </button>
+    </li>
+    <li>
+      <button [routerLink]="['/blog', 'vue']" routerLinkActive="selected-category">
+        <img src="../../../../assets/Vue.png" alt="">
+        <span class="button-text px-2">Vue</span>
+
+      </button>
+    </li>
+    <li>
+      <button [routerLink]="['']" (click)="selectCategory('genel')"
+      [class.selected-category]="selectedCategory === 'genel'">
+        <img src="../../../../assets/genel.png" alt="" >
+        <span class="button-text px-2">Genel</span>
+
+      </button>
+    </li>
+    <li>
+      <button [routerLink]="['/blog', 'javascript']" routerLinkActive="selected-category">
+        <img src="../../../../assets/js.png" alt="" >
+        <span class="button-text px-2">JavaScript</span>
+
+      </button>
+    </li>
+    <li>
+      <button [routerLink]="['/blog', 'css']" routerLinkActive="selected-category">
+        <img src="../../../../assets/css.png" alt="">
+        <span class="button-text px-2">CSS</span>
+
+      </button>
+    </li>
+    <li>
+      <button [routerLink]="['/blog', 'html']" routerLinkActive="selected-category">
+        <img src="../../../../assets/html.png" alt="">
+        <span class="button-text px-2">HTML</span>
+
+      </button>
+    </li>
+    <li>
+      <button [routerLink]="['/blog', 'typescript']" routerLinkActive="selected-category">
+        <img src="../../../../assets/TypeScript.png" alt="">
+        <span class="button-text px-2">TypeScript</span>
+
+      </button>
+    </li>
+    <li>
+      <button [routerLink]="['/blog', 'mongodb']" routerLinkActive="selected-category">
+        <img src="../../../../assets/mong.png" alt="">
+        <span class="button-text px-2">MongoDB</span>
+
+      </button>
+    </li>
+    <li>
+      <button [routerLink]="['/blog', 'git']" routerLinkActive="selected-category">
+        <img src="../../../../assets/Git.png" alt="">
+        <span class="button-text px-2">Git</span>
+
+      </button>
+    </li>
+    <li>
+      <button [routerLink]="['/blog', 'jquery']" routerLinkActive="selected-category">
+        <img src="../../../../assets/jquery.png" alt="">
+        <span class="button-text px-2">jQuery</span>
+
+      </button>
+    </li>
+    <li>
+      <button [routerLink]="['/blog', 'PHP']" routerLinkActive="selected-category">
+        <img src="../../../../assets/PHP.png" alt="">
+        <span class="button-text px-2">PHP</span>
+   
+      </button>
+    </li>
+    <li>
+      <button [routerLink]="['/blog', 'SQL']" routerLinkActive="selected-category">
+        <img src="../../../../assets/sql.png" alt="">
+        <span class="button-text px-2">SQL</span>
+    
+      </button>
+    </li>
+    
+  </ul>
+  
+</div>
+

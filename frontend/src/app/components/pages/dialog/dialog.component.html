@@ -1,0 +1,73 @@
+ 
+<div mat-dialog-title>Add Item List</div>
+<div mat-dialog-content>
+  <form [formGroup]="formValue">
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+      <mat-error *ngIf="errorHandling('title', 'required')">
+        You must provide a <strong>title</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>imagePath</mat-label>
+      
+      <input matInput formControlName="imagePath" />
+      <mat-error *ngIf="errorHandling('imagePath', 'required')">
+        You must provide a <strong>imagePath</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>content</mat-label>
+      <input matInput formControlName="content" />
+      <mat-error *ngIf="errorHandling('content', 'required')">
+        You must provide a <strong>content</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>createdAt </mat-label>
+      <input formControlName="createdAt" matInput />
+      <mat-error *ngIf="errorHandling('createdAt', 'required')">
+        Price must be <strong>creadetAt</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status" matInput>
+        <mat-option value="Active">Active</mat-option>
+        <mat-option value="Inactive">Inactive</mat-option>
+      </mat-select>
+      <mat-error *ngIf="errorHandling('status', 'required')">
+        Status is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    
+
+    <mat-form-field appearance="fill">
+      <mat-label>technology</mat-label>
+      <input formControlName="technology" matInput />
+      <mat-error *ngIf="errorHandling('technology', 'required')">
+        You must provide a <strong>technology</strong>
+      </mat-error>
+    </mat-form-field>
+    
+  </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="updateItem()"
+    *ngIf="showUpdateButton"
+  >
+    Update
+  </button>
+ 
+ 
+  <button mat-raised-button color="warn" mat-dialog-close (click)="close()">
+    Close
+  </button>
+</div>
+

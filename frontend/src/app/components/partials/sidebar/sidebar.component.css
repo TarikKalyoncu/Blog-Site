@@ -1,0 +1,86 @@
+/* sidenavbar.component.css */
+.sidenavbar {
+  width: 200px;
+  
+   
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+
+
+  
+  .category-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .category-list li {
+   border: none;
+
+display: flex;
+
+background-color:white;
+padding-bottom: 3px;
+padding-top: 2px;
+
+  }
+  .category-list li:hover {
+    background-color: rgb(221, 221, 221) ;
+    transition: background-color 0.1s;
+     }
+  
+
+  .category-list li button img{
+   
+    width: 25px;
+    height: 25px;
+  
+
+
+   }
+  
+  .category-list button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    
+    background-color: white;
+    text-align: left;
+    cursor: pointer;
+   
+    border: none;
+  }
+  .sidenavbar .category-list li:hover button {
+    background-color: rgb(221, 221, 221) ;
+    transition: background-color 0.1s;
+  }
+  .sidenavbar .category-list li span {
+    font-size: 18px !important;
+    font-weight: 300;
+  }
+   
+  
+  @media (max-width: 1250px) {
+.sidenavbar{
+
+
+  width: 55px;
+}
+
+
+    .sidenavbar .category-list li button .button-text {
+      display: none;
+      
+    }
+    
+  }
+
+
+  .line {
+    height: 1px; 
+    width: 100%;  
+    background-color: black;  
+  }
+  .selected-category {
+    background-color: #dfdfdf !important;  
+   
+  }

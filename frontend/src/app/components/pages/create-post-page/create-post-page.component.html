@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div class="formWrapper">
+
+    <mat-form-field appearance="outline" class="pe-5 ">
+      <mat-label>Başlık</mat-label>
+      <input matInput [formControl]="title" required>
+      <mat-error *ngIf="title.invalid">{{getErrorMessagetitle()}}</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="pe-5 ps-2">
+      <mat-label>Teknoloji</mat-label>
+      <mat-select [formControl]="department" required>
+        <mat-option value="htlm">HTML</mat-option>
+        <mat-option value="css">CSS</mat-option>
+        <mat-option value="javascript">JavaScript</mat-option>
+        <mat-option value="typescript">TypeScript</mat-option>
+        <mat-option value="angular">Angular</mat-option>
+        <mat-option value="react">React</mat-option>
+        <mat-option value="vue">Vue</mat-option>
+        <mat-option value="NodeJS">NodeJS</mat-option>
+        <mat-option value="Genel">Genel</mat-option>
+        <mat-option value="MongoDB">MongoDB</mat-option>
+        <mat-option value="Git">Git</mat-option>
+        <mat-option value="jQuery">jQuery</mat-option>
+        <mat-option value="PHP">PHP</mat-option>
+        <mat-option value="SQL">SQL</mat-option>
+      </mat-select>
+      <mat-error *ngIf="department.invalid">{{getErrorMessagedept()}}</mat-error>
+      
+    </mat-form-field>
+    
+    
+ 
+    <button class="brdr" type="button" mat-raised-button (click)="fileInput.click()" [disabled]="isFileUploaded">
+      {{ isFileUploaded ? 'Resim Yüklendi' : 'Başlık Resmi Yükle' }}
+      <mat-icon *ngIf="isFileUploaded" style="color: green;">done </mat-icon>
+    </button>
+    <input hidden (change)="onFileSelect($event)" #fileInput type="file" id="file">
+    
+    
+    
+  
+    <div class="ckeditorContainer">
+      <mat-label>Yazı İçeriği</mat-label>
+      <ckeditor [config]="editorConfig" [editor]="Editor" [formControl]="content" (ready)="onReady($event)" required></ckeditor> 
+      <mat-error *ngIf="content.invalid && checkCkEditor">{{getErrorMessageckeditor()}}</mat-error>
+    </div>
+    <br>
+    <br>
+
+
+  
+    <re-captcha
+    (resolved)="resolved($event)"
+    siteKey="6Lc4cZwnAAAAABKS4VTIF2OoKsKCUYC5eqcxQUSD"
+    [formControl]="recaptcha"
+  ></re-captcha>
+
+
+
+  
+    <br>
+    <button mat-stroked-button [disabled]="recaptcha.invalid" (click)="submitButtonClicked()" >Submit</button>
+  </div>
+  

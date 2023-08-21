@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h2>Kaydedilen Gönderiler</h2>
+  <button type="button" class="close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let blogPost of blogPosts">
+      <div [routerLink]="['/blog/detail', blogPost.title, blogPost.id]">{{ blogPost.title }}</div>
+    </li>
+  </ul>
+  
+  <div *ngIf="blogPosts.length === 0" class="no-data-message">
+    Kaydedilen gönderi yok.
+  </div>
+</div>

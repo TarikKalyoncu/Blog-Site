@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+  <div class="container d-flex justify-content-between">
+    <a [routerLink]="['']">
+      <img src="../../../../assets/LOG1.png"  [routerLink]="['']" alt="" height="45px" width="200px">
+    </a>
+    
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="searchBox" class="mobile-form d-none d-lg-block">
+      <form class="search-form" id="searchform" (ngSubmit)="search()" #searchForm="ngForm">
+        <span id="noEasy">
+          <input class="sb-search-submit" type="submit" value="" />
+          <span class="fas fa-search"></span>
+        </span>
+        <input
+          id="sbox"
+          name="q"
+          [(ngModel)]="searchTerm"
+          placeholder="search"
+          type="text"
+          x-webkit-speech=""
+        />
+      </form>
+    </div>
+    <div
+      class="collapse navbar-collapse "
+      id="navbarSupportedContent"
+      style="flex-grow: inherit"
+    >
+
+      <ul class="navbar-nav mr-auto d-flex flex-row " > 
+
+        <li class="nav-item" *ngIf="isLoggedIn" style="display: flex">
+          <a [routerLink]="getUserProfileLink()">
+            <img [src]="userPhoto" alt="User Photo" style="object-fit: cover"
+          /></a>
+
+          <a class="nav-link" [routerLink]="getUserProfileLink()"  >Profil</a>
+        </li>
+       
+        <li class="nav-item active" *ngIf="isLoggedIn && isAdmin">
+          <a class="nav-link" [routerLink]="['/blog','admin','panel']">Panel</a>
+        </li>
+        <li class="nav-item active" *ngIf="isLoggedIn">
+          <a class="nav-link" [routerLink]="['/blog', 'create','post']">Yazı Yaz</a>
+        </li>
+        <li class="nav-item active" >
+          <a class="nav-link" [routerLink]="['/blog','contact', 'send-email']">İletişim</a>
+        </li>
+    
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" [routerLink]="['/blog']" (click)="logout()"
+            >Çıkış</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link" [routerLink]="['/auth', 'login']">Giriş</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link" [routerLink]="['/auth', 'register']">Kayıt</a>
+        </li>
+     
+        
+      </ul>
+      <div id="searchBox" class="mobile-form">
+        <form class="search-form" id="searchform" (ngSubmit)="search()" #searchForm="ngForm">
+          <span id="noEasy">
+            <input class="sb-search-submit" type="submit" value="" />
+            <span class="fas fa-search"></span>
+          </span>
+          <input
+            id="sbox"
+            name="q"
+            [(ngModel)]="searchTerm"
+            placeholder="search"
+            type="text"
+            x-webkit-speech=""
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>

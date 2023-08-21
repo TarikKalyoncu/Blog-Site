@@ -1,0 +1,59 @@
+ 
+ 
+  .modal-header {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+ 
+  .close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+ 
+  .modal-body {
+    padding: 20px;
+  }
+
+  
+  .list-group {
+    list-style: none;
+    padding: 0;
+  }
+
+  
+  .list-group-item {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    font-size: 16px;
+  }
+
+ 
+  .list-group-item:hover {
+    background-color: #f7f7f7;
+  }
+ 
+  .modal-body {
+    max-height: 400px;  
+    overflow-y: auto; 
+    padding: 20px;
+  }
+
+  
+  .list-group {
+    list-style: none;
+    padding: 0;
+  }
+
+  .no-data-message {
+    text-align: center;
+    padding: 20px;
+    color: gray;
+  }

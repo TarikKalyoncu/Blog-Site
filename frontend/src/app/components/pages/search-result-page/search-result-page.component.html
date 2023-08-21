@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <app-header></app-header>
+  <div class="row">
+    <div class="col-3 col-sm-2 col-md-1 col-lg-1 col-xl-2">
+      <app-sidebar></app-sidebar>
+    </div>
+
+    <div class="col-9 col-sm-10 col-md-11 col-lg-11 col-xl-10">
+      <div class="row">
+        <div class="tittle">
+          <h3 class="pt-4 mb-3 text">
+            Aranan İfade: <span style="color: brown;">'{{ searchTerm }}'</span>
+          </h3>
+          <span class="line mr-3 mb-2"  *ngIf="getActiveFilteredBlogPosts().length > 0">{{ searchlenght }} içerik bulundu </span>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="getActiveFilteredBlogPosts().length === 0">
+        <div class="col-12 text-center">
+          <p >Aradığınız içerik bulunamadı.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div
+          class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4"
+          *ngFor="let searchResult of getActiveFilteredBlogPosts() | sortByDate: 'createdAt' |paginate
+          : {
+              itemsPerPage: 8,
+              currentPage: page,
+              totalItems: count
+            };">     
+          <div class="card ">
+            <a [routerLink]="['/blog/detail', searchResult.title,searchResult.id]" (click)="storeClickedBlogPost(searchResult)"
+            >
+          <img [src]="postPhotos[searchResult.id]" class="card-img-top" alt="Blog Post Image">
+          <div class="card-body">
+            <a [routerLink]="getUserProfileLink(searchResult.user.id)">
+              <img [src]="userPhotos[searchResult.user.id]" alt="User Photo" style="object-fit: cover;" />
+            </a>
+            <h5 class="card-title">{{ searchResult.title }}</h5>
+          </div>
+          <div class="card-footer px-5">
+            <small class="text-muted">{{ searchResult.user.firstName }} {{ searchResult.user.lastName }} - {{ getTimeElapsed(searchResult.createdAt) }}</small>
+          </div>
+          
+          
+          
+          </a>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <pagination-controls
+    previousLabel="Önceki"
+    nextLabel="Sonraki"
+    (pageChange)="onTableDataChange($event)"
+  ></pagination-controls>
+</div>

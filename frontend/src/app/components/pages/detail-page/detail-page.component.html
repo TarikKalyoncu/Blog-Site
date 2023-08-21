@@ -1,0 +1,169 @@
+
+<app-header></app-header>
+ 
+<div *ngIf="clickedBlogPost" class="container my-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <h1>{{ clickedBlogPost.title }}</h1>
+      <p class="pt-1 pe-1 ms-2 d-flex align-items-end flex-column">
+        <i
+          class="fa-solid fa-bookmark fa-2xl"
+          [class.active]="isBookmarked"
+          (click)="toggleBookmark(clickedBlogPost.id)"></i>
+      </p>
+    </div>
+    
+    <div
+      class="col-lg-8 offset-lg-2 d-flex flex-row d-flex align-items-center"
+      style="font-weight: 200"
+    >
+      <a
+        class="pe-3 d-flex flex-row"
+        [routerLink]="getUserProfileLink(clickedBlogPost.user!.id)"
+      >
+        <img
+          [src]="userPhotoUrl"
+          alt="User Photo"
+          style="object-fit: cover"
+          class="img"
+          sty
+        />
+        <p class="pt-2">
+          {{ clickedBlogPost.user?.firstName }}
+          {{ clickedBlogPost.user?.lastName }}
+        </p>
+      </a>
+      <p class="ms-1 pe-3 pt-2 pe-1">
+        <i class="fas fa-clock me-1" style="color: rgb(57, 15, 9)"></i>
+        {{ clickedBlogPost.createdAt | date }}
+      </p>
+      <p class="pt-1 pe-1">
+        <i class="fas fa-laptop me-1"></i>
+        {{ clickedBlogPost.technology | uppercase }}
+      </p>
+      <p class="pt-1 pe-1 ms-2">
+        <i class="fa-regular fa-comment" style="color: #024e25"></i>
+        {{ commentlength }}
+      </p>
+       
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 deneme">
+      <div class="line mb-3 mt-4 d-flex justify-content-center"></div>
+      <img [src]="blogPhotoUrl" alt="Blog Post Image" class="img-fluid my-3 mb-5" style="max-height: 470px;" />
+      <div class="blog-content img-fluid my-3" [innerHTML]="sanitizeHtml"></div>
+      <div class="line mb-3 mt-4 d-flex justify-content-center"></div>
+
+      <div>
+        <h2>
+          Yorumlar
+          <span class="px-1" style="font-weight: 700">{{ commentlength }}</span>
+        </h2>
+
+        <div class="comments-container">
+          <div *ngFor="let comment of comments" class="comment">
+            <div class="comment-header">
+              <div class="user-info d-flex flex-row">
+                <a class="" [routerLink]="getUserProfileLink(comment.user!.id)">
+                  <img
+                    [src]="userPhotos[comment.user!.id]"
+                    alt="User Photo"
+                    class="user-photo"
+                  />
+                </a>
+                <div class="user-name">
+                  {{ comment.user!.firstName }} {{ comment.user!.lastName }}
+                </div>
+              </div>
+              <button
+                *ngIf="isUserOwner(comment.user!.id)"
+                (click)="deleteComment(comment.id!)"
+                style="border: none; background-color: transparent"
+              >
+                <span class="delete-icon">🗑️</span>
+              </button>
+            </div>
+            <div class="comment-body">
+              <h3>{{ comment.subject }}</h3>
+              <p style="color: rgb(106, 106, 106)">{{ comment.detail }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 form-container">
+        <h3>Yorum Yap</h3>
+        <form
+          [formGroup]="commentForm"
+          (ngSubmit)="addComment()"
+          *ngIf="isLoggedIn"
+        >
+          <div class="mb-3">
+            <label for="commentSubject" class="form-label">Başlık</label>
+            <input
+              type="text"
+              class="form-control"
+              id="commentSubject"
+              formControlName="subject"
+              maxlength="40"
+            />
+            <div
+              *ngIf="
+                commentForm.get('subject')?.invalid &&
+                commentForm.get('subject')?.touched
+              "
+              class="text-danger"
+            >
+              Lütfen bir başlık girin.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="commentDetail" class="form-label">Detay</label>
+            <textarea
+              class="form-control"
+              id="commentDetail"
+              formControlName="detail"
+              maxlength="1000"
+              style="max-height: 300px"
+            ></textarea>
+            <div
+              *ngIf="
+                commentForm.get('detail')?.invalid &&
+                commentForm.get('detail')?.touched
+              "
+              class="text-danger"
+            >
+              Lütfen bir detay girin.
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary
+            mb-2"
+            [disabled]="commentForm.invalid"
+          >
+            Yorum Ekle
+          </button>
+        </form>
+        <div class="card mb-3" *ngIf="!isLoggedIn">
+          <div class="card-body">
+            <h5 class="card-title">
+              Yorum Yapmak İçin Giriş Yapın veya Üye Olun
+            </h5>
+            <p class="card-text">
+              Yorum eklemek için hesabınıza giriş yapabilir veya üye
+              olabilirsiniz.
+            </p>
+            <a [routerLink]="['/auth', 'login']" class="btn btn-primary"
+              >Giriş Yap</a
+            >
+            <a [routerLink]="['/auth', 'register']" class="btn btn-info ms-2"
+              >Üye Ol</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

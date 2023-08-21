@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>{{ editMode ? 'Edit User' : 'Add User' }}</h2>
+<div mat-dialog-content>
+  <form [formGroup]="userForm">
+    <mat-form-field>
+      <mat-label>Occupation</mat-label>
+      <input matInput formControlName="occupation">
+      <mat-error *ngIf="userForm.get('occupation')?.hasError('required')">Occupation is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>LinkedIn Link</mat-label>
+      <input matInput formControlName="linkedinLink">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Github Name</mat-label>
+      <input matInput formControlName="youtubeLink">
+
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Instagram Name</mat-label>
+      <input matInput formControlName="instagramLink">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Twitter Name</mat-label>
+      <input matInput formControlName="twitterLink">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>About Me</mat-label>
+      <textarea matInput formControlName="aboutMe"></textarea>
+      <mat-error *ngIf="userForm.get('aboutMe')?.hasError('maxlength')">About Me must be at most 500 characters long</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [disabled]="userForm.invalid" (click)="onSave()">
+    {{ editMode ? 'Save' : 'Add' }}
+  </button>
+</div>

@@ -1,0 +1,53 @@
+<div class="container-fluid" >
+  <app-header></app-header>
+  <div class="row  ">
+    <div class="col-3 col-sm-2 col-md-1 col-lg-1 col-xl-2">
+      <app-sidebar></app-sidebar>
+    </div>
+ 
+    <div class="col-9 col-sm-10 col-md-11 col-lg-11 col-xl-10">
+      <div class="row">
+
+    
+        
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-4 mr-4 mt-3" *ngFor="let blogPost of getActiveFilteredBlogPosts() | sortByDate: 'createdAt' | paginate
+        : {
+            itemsPerPage: 8,
+            currentPage: page,
+            totalItems: count
+          };       ">
+          <div class="card">
+            <a [routerLink]="['/blog/detail', blogPost.title,blogPost.id]" (click)="storeClickedBlogPost(blogPost)">
+              <img [src]="postPhotos[blogPost.id]" class="card-img-top" alt="Blog Post Image">
+              <div class="card-body">
+                <a class="pe-3" [routerLink]="getUserProfileLink(blogPost.user.id)" >
+                  <img
+                    [src]="userPhotos[blogPost.user.id]"
+                    alt="User Photo"
+                    style="object-fit: cover;"
+                  />
+                </a>
+                <div class="card-title">{{ blogPost.title }}</div>
+              </div>
+              <div class="card-footer px-5">
+                <small class="text-muted">{{ blogPost.user.firstName }} {{ blogPost.user.lastName }} - {{ getTimeElapsed(blogPost.createdAt) }}</small>
+              </div>
+            </a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center ">
+  <pagination-controls
+    previousLabel="Önceki"
+    nextLabel="Sonraki"
+   
+    (pageChange)="onTableDataChange($event)"
+  >
+  </pagination-controls>
+</div>
+
+

@@ -1,0 +1,44 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<app-header></app-header>
+
+<div class="d-flex justify-content-center pt-5 ">
+
+  <form [formGroup]="form" (submit)="sendEmail()">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ad Soyad</mat-label>
+      <input matInput type="text" id="name" name="name" formControlName="name" >
+      <mat-icon matSuffix>person</mat-icon>
+      <mat-error *ngIf="form.get('name')?.hasError('required')">Ad Soyad gereklidir.</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Adres</mat-label>
+      <input matInput type="email" id="toEmail" name="toEmail" formControlName="toEmail">
+      <mat-icon matSuffix>mail</mat-icon>
+      <mat-error *ngIf="form.get('toEmail')?.hasError('required')">e-posta gereklidir.</mat-error>
+      <mat-error *ngIf="form.get('toEmail')?.hasError('pattern')">Geçerli bir e-posta adresi girin.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Konu</mat-label>
+      <input matInput type="text" id="subject" name="subject" formControlName="subject">
+      <mat-icon matSuffix>subject</mat-icon>
+      <mat-error *ngIf="form.get('subject')?.hasError('required')">Konu gereklidir.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Mesaj</mat-label>
+      <textarea matInput id="message" name="message" formControlName="message"></textarea>
+      <mat-icon matSuffix>message</mat-icon>
+      <mat-error *ngIf="form.get('message')?.hasError('required')">Mesaj gereklidir.</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid" [ngClass]="{'disabled-button': !form.valid}">Send Email</button>
+
+    
+  </form>
+
+  <img src="../../../../assets/meteor_mail.png" alt="" class="d-none d-lg-block">
+
+</div>

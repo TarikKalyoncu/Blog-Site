@@ -1,0 +1,4 @@
+@import url(./node_modules/bootstrap/dist/css/);
+@import url(src/i);
+@import url(./node_modules/jquery/dist/);
+@import url(../frontend/src/app/ckCustomBuild/node_modules/ckeditor5/build/);

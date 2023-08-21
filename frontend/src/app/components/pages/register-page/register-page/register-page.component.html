@@ -1,0 +1,129 @@
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<app-header></app-header>
+<body>
+  
+
+  <div class="bg-img">
+    
+    <div class="content pt-4 pb-5 mt-3">
+      <header>Kayıt Formu</header>
+      <form [formGroup]="signupForm" (ngSubmit)="register()" class="form-signin">
+        <div class="field border" >
+          <span class="fa fa-user-circle"></span>
+          <label for="exampleInputUsername1" class="sr-only">Ad</label>
+          <input
+            formControlName="firstName"
+            type="firstName"
+            class="form-control"
+            id="exampleInputUsername1"
+            placeholder="Ad"
+            autocomplete="disabled"
+          />
+          <span
+            class="text-danger"
+            *ngIf="signupForm.controls['firstName'].dirty && signupForm.hasError('usernameError', 'firstName')"
+          ><i class="fa-solid fa-xmark"></i></span>
+        </div>
+
+        <div class="field space border">
+          <span class="fa fa-address-card"></span>
+          <label for="exampleInputLastName1" class="sr-only">Soyad</label>
+          <input
+            formControlName="lastName"
+            type="lastName"
+            class="form-control"
+            id="exampleInputLastName1"
+            placeholder="Soyad"
+            autocomplete="disabled"
+          />
+          <span
+            class="text-danger"
+            *ngIf="signupForm.controls['lastName'].dirty && signupForm.hasError('usernameError', 'lastName')"
+          ><i class="fa-solid fa-xmark"></i></span>
+        </div>
+
+        <div class="field space border" >
+          <span class="fa-solid fa-envelope"></span>
+          <label for="exampleInputEmail1" class="sr-only">Email</label>
+          <input
+            formControlName="email"
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            placeholder="Email"
+            autocomplete="disabled"
+          />
+          <span
+            class="text-danger"
+            *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('pattern', 'email')"
+          ><i class="fa-solid fa-xmark"></i></span>
+        </div>
+
+        <div class="field space border">
+          <span class="fa fa-lock"></span>
+          <label for="exampleInputPassword2" class="sr-only">Parola</label>
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+            id="exampleInputPassword2"
+            placeholder="Parola"
+          />
+          <span
+            class="text-danger"
+            *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required', 'password')"
+          ><i class="fa-solid fa-xmark"></i></span>
+          <span
+            class="text-danger"
+            *ngIf="signupForm.controls['password'].touched && signupForm.hasError('pattern', 'password')"
+          ><i class="fa-solid fa-xmark"></i></span>
+        </div>
+
+        <div class="field space border">
+          <span class="fa fa-lock"></span>
+          <label for="exampleInputPassword1" class="sr-only">Parola(Tekrar)</label>
+          <input
+            formControlName="confirmpassword"
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Parola(Tekrar)"
+          />
+          <span
+            class="text-danger"
+            *ngIf="signupForm.controls['confirmpassword'].dirty && signupForm.hasError('passwordMismatch', 'confirmpassword')"
+          ><i class="fa-solid fa-xmark"></i></span>
+        </div>
+
+  
+        <div class="field signup">
+          <button [disabled]="!signupForm.valid" type="submit" class="btn btn-lg btn-primary btn-block">Kayıt ol</button>
+        </div>
+
+      </form>
+
+      <div class="signup">
+        Zaten hesabım var!
+        <a [routerLink]="['/auth', 'login']">Giriş</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const pass_field = document.querySelector('.pass-key');
+    const showBtn = document.querySelector('.show');
+    showBtn.addEventListener('click', function () {
+      if (pass_field.type === "password") {
+        pass_field.type = "text";
+        showBtn.textContent = "HIDE";
+        showBtn.style.color = "#3498db";
+      } else {
+        pass_field.type = "password";
+        showBtn.textContent = "SHOW";
+        showBtn.style.color = "#222";
+      }
+    });
+  </script>
+</body>
