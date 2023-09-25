@@ -15,7 +15,7 @@ import { BlogpostModule } from './blogpost/blogpost.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'ibuypower53',
+      password: '',
       database: 'Blog',
       autoLoadEntities: true,
       synchronize: true,
